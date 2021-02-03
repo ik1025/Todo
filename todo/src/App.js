@@ -1,16 +1,47 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
 
-function App() {
-  return (
-    <div class="jumbotron jumbotron-fluid">
-      <div class="container">
-        <h1 class="display-4">Fluid jumbotron</h1>
-        <p class="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+class App extends Component {
+
+  state = {
+    todoList :[]
+  }
+
+  render() {
+    return (
+      <div>
+        <div className="jumbotron jumbotron-fluid py-2">
+          <div className="container">
+            <h1 className="display-2">Things To Do</h1>
+            <p className="lead">This is a modified jumbotron that occupies the entire horizontal space of its parent.</p>
+          </div>
+        </div>
+
+        <form className="mb-3" onSubmit={this.handleSubmit}>
+          <div className="input-group">
+            <input type="text" className="form-control" placeholder="Your text here" autoComplete="off" id="inputGroup-sizing-lg" name="TodoTask"/>
+            <div className="input-group-append">
+              <button type="submit" className="btn btn-outline-success">Add</button>
+            </div>
+          </div>
+        </form>
       </div>
-    </div>
-  );
+    );
+  }
+
+  handleSubmit = (e) => {
+    var taskDesc = e.target.elements.TodoTask.value;
+    console.log(taskDesc);
+
+    if(taskDesc.length > 0) {
+      this.setState({
+        todoList:[...this.state.todoList, taskDesc]
+      })
+      e.target.reset();
+    }
+    e.preventDefault();
+  }
+
 }
 
 export default App;
