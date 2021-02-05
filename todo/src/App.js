@@ -20,14 +20,21 @@ class App extends Component {
           </div>
         </div>
 
-        <form className="mb-3" onSubmit={this.handleSubmit}>
-          <div className="input-group">
-            <input type="text" className="form-control" placeholder="Your text here" autoComplete="off" id="inputGroup-sizing-lg" name="TodoTask"/>
-            <div className="input-group-append">
-              <button type="submit" className="btn btn-outline-success">Add</button>
+        <div className="form-group">
+          <form className="mb-3" onSubmit={this.handleSubmit}>
+            <div className="input-group">
+              <input type="text" className="form-control" placeholder="Task" autoComplete="off" id="inputGroup-sizing-lg" name="TodoTask"/>
             </div>
-          </div>
-        </form>
+
+            <div className="input-group">
+              <input type="text" className="form-control" placeholder="Location" autoComplete="off" id="inputGroup-sizing-lg" name="TodoTask"/>
+            </div>
+
+            <div className="input-group-append">
+              <button type="submit" className="btn btn-primary">Add</button>
+            </div>
+          </form>
+        </div>
 
         <ul className="list-group">
           {this.state.todoList.map(
